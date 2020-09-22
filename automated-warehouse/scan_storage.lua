@@ -20,7 +20,10 @@ function display_info()
 	        	mon.write("   ")
 	        	mon.write(lagermtx[i][j].items[k].count)
 	        	mon.write(" x ")
-	        	mon.write(lagermtx[i][j].items[k].name)
+	        	--remove minercaft: ore other mod directions
+	        	longname = lagermtx[i][j].items[k].name
+	        	name = string.sub(longname,string.find(longname,":")+1,string.len(longname))
+	        	mon.write(name)
     		end
 	    end
 	end
