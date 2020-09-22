@@ -30,6 +30,14 @@ function display_info()
 
 end
 
+function send_file(id)
+
+	msg = textutils.serialize(lagermtx)
+	rednet.open("left")
+	rednet.broadcast(msg,"file")
+	print("Storage data send to ID: ",id)
+end
+
 function scan(di,dj)
     --place temp chest
     turtle.placeUp()
@@ -60,11 +68,12 @@ function scan(di,dj)
 
 	--destroy temp chest
 	turtle.digUp()
-	--write the data 
 
-	file = fs.open("lagermtx","w")
-	file.write(textutils.serialize(lagermtx))
-	file.close()
+
+
+	--send to monitor
+	send_file(4,"lagermtx")
+
 end
 
 --get lager data and show index
@@ -93,7 +102,8 @@ end
 for i=1,xs do
 	turtle.back()
 end
-display_info()
 print("Complete scan")
+display_info()
+
 
 
