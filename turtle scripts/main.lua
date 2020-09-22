@@ -90,7 +90,8 @@ end
 function endoflame()
     --get water and seed
     water()
-   	getitems(2,3,2,1,1)
+    --getitems <row> <amount different items> <item1 amount> <item2 amount> ..
+    getitems(2,3,2,1,1)
     --drop items
     craft("endoflame")
     check_fuel()
